@@ -1,6 +1,10 @@
 from collections import defaultdict
 from email import header
+from itertools import cycle
 from multiprocessing import context
+from threading import Thread
+from time import sleep
+from turtle import done
 from unicodedata import name
 from urllib import response
 from django.shortcuts import redirect, render
@@ -38,8 +42,8 @@ def is_SERVER_up(url):
         return False
 
 # Create your views here.
-# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<WEBSITE<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<WEBSITE<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 @api_view(['GET'])
 def home(request):
     data=LiveData.objects.all()
@@ -104,7 +108,15 @@ def updatestatus(request):
     app=LiveData.objects.all()
     appname=app.values_list('appname','url','online')
     for i in appname:
+        print('-----------------------------------------------')
+        print('-----------------------------------------------')
+        print(f'Checking {i[0]} Server....')
         status=is_SERVER_up(i[1])
+        if status:
+            stat='Online'
+        else:
+            stat='Offline'
+        print(f'{i[0]} Server is {stat}' )
         data={'appname':i[0],'url':i[1],'online':status}
         RealTimeBigData.objects.create(appname=i[0],url=i[1],online=status)
         if i[2]!=status:

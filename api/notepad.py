@@ -1,3 +1,23 @@
+# >>>>>>>>>>>>>LOADING ANimation<<<<<<<<<<<<<<<<<<<<<<<
+#  def load_():
+#         n_points=5
+#         points_l=['.' * i + ' ' * (n_points - i) + '\r' for i in range(n_points)]
+#         # cond=True
+#         cond=False
+
+#         for points in cycle(points_l):
+#             print(points, end='')
+#             sleep(0.1)
+#             # if not cond:
+#             if cond:
+#                 break
+#         t=Thread(target=load_)
+#         t.start()
+#         sleep(5)
+#         cond=True
+#     load_()
+#     >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ 
   # <button class="test btn btn-primary">Testing</button>
   # <table class="table table-striped">
   #     <thead>
