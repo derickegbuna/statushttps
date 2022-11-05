@@ -5,6 +5,7 @@ class RealTimeBigData(models.Model):
     appname=models.CharField(max_length=200)
     url=models.CharField(max_length=2056)
     online=models.BooleanField(default=False)
+    code=models.IntegerField(null=True,blank=True)
     created=models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return self.appname
@@ -26,9 +27,10 @@ class LiveData(models.Model):
     appname=models.CharField(max_length=200)
     url=models.CharField(max_length=200)
     online=models.BooleanField(default=False)
+    code=models.IntegerField(null=True,blank=True)
     date=models.DateTimeField(auto_now=True)
     def __str__(self):
         return self.appname
     class Meta:
-        ordering=['online','appname']
+        ordering=['-date','online','appname']
 

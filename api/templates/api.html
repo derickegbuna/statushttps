@@ -1,3 +1,5 @@
+{%load static%}
+{%load humanize%}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -15,24 +17,51 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
+            <div class="container-fluid">
+                <h3 class="text-center"><strong><span style="color: grey;">Welcome to</span> <span style="text-decoration:none; color:#457497;">Status</span><span style="text-decoration:none; color:#73c2fb;">HTTPS</span></strong></h3>
+                <!-- <a href="" class="navbar-brand"><h3 style="color: grey; font-family: cursive, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Welcome to StatusHTTPS</h3></a> -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link"></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{%url 'about-us' %}">About us</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
         <div class="container">
             <div class="row">
-                <div class="col-md-4 pt-4 pb-4"></div>
+                <div class="col-md-4"></div>
                 <div class="col-md-4 pt-4 pb-4">
                     <div class="card ps-4 pe-4 pt-4">
-                        <h5 class="text-center">StatusHTTPS</h5>
+                        <small><span style="font-weight: bold;">Updated: </span>{%for time in update%}{{time.date|naturaltime}}{%endfor%}</small>
                         {%for data in app%}
                             {%if data.appname == 'tiktok' and data.online%}
                                 <div class="alert alert-success" style="color: black;" role="alert">
-                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fab fa-tiktok" style="color: #000000;"></i> Tiktok is Up and Running <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fab fa-tiktok" style="color: #000000;"></i> Tiktok is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
                                 </div>
                             {%elif data.appname == 'tiktok' and not data.online%}
                                 <div class="alert alert-danger" style="color: black;" role="alert">
                                     <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"> <i class="fab fa-tiktok" style="color: #000000;"></i> Tiktok Down <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
                                 </div>
+                            {%elif data.appname == 'spotify' and data.online%}
+                                <div class="alert alert-success" style="color: black;" role="alert">
+                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fab fa-spotify" style="color: #81b71a;" ></i><span style="color: #81b71a;"> Spotify</span> is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                                </div>
+                            {%elif data.appname == 'spotify' and not data.online%}
+                                <div class="alert alert-danger" style="color: black;" role="alert">
+                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fab fa-spotify" style="color: #81b71a;" ></i><span style="color: #81b71a;"> Spotify</span> is Down <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
+                                </div>
                             {%elif data.appname == 'instagram' and data.online%}
                                 <div class="alert alert-success" style="color: black;" role="alert">
-                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fab fa-instagram" style="color: #e4405f;"></i> Instagram is Up and Running <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fab fa-instagram" style="color: #e4405f;"></i> Instagram is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
                                 </div>
                             {%elif data.appname == 'instagram' and not data.online%}
                                 <div class="alert alert-danger" style="color: black;" role="alert">
@@ -40,7 +69,7 @@
                                 </div>
                             {%elif data.appname == 'facebook' and data.online%}
                                 <div class="alert alert-success" style="color: black;" role="alert">
-                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fab fa-facebook" style="color: #3b5998;"></i> Facebook is Up and Running <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fab fa-facebook" style="color: #3b5998;"></i> Facebook is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
                                 </div>
                             {%elif data.appname == 'facebook' and not data.online%}
                                 <div class="alert alert-danger" style="color: black;" role="alert">
@@ -48,7 +77,7 @@
                                 </div>
                             {%elif data.appname == 'whatsapp' and data.online%}
                                 <div class="alert alert-success" style="color: black;" role="alert">
-                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fab fa-whatsapp" style="color: #075e54;"></i> Whatsapp is Up and Running <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fab fa-whatsapp" style="color: #075e54;"></i> Whatsapp is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
                                 </div>
                             {%elif data.appname == 'whatsapp' and not data.online%}
                                 <div class="alert alert-danger" style="color: black;" role="alert">
@@ -56,7 +85,7 @@
                                 </div>
                             {%elif data.appname == 'telegram' and data.online%}
                                 <div class="alert alert-success" style="color: black;" role="alert">
-                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fab fa-telegram" style="color: #0088cc;"></i> Telegram is Up and Running <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fab fa-telegram" style="color: #0088cc;"></i> Telegram is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
                                 </div>
                             {%elif data.appname == 'telegram' and not data.online%}
                                 <div class="alert alert-danger" style="color: black;" role="alert">
@@ -64,7 +93,7 @@
                                 </div>
                             {%elif data.appname == 'snapchat' and data.online%}
                                 <div class="alert alert-success" style="color: black;" role="alert">
-                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fa fa-snapchat" style="color: #fffc00;"></i> Snapchat is Up and Running <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fa fa-snapchat" style="color: #fffc00;"></i> Snapchat is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
                                 </div>
                             {%elif data.appname == 'snapchat' and not data.online%}
                                 <div class="alert alert-danger" style="color: black;" role="alert">
@@ -72,31 +101,31 @@
                                 </div>
                             {%elif data.appname == 'zoom' and data.online%}
                                 <div class="alert alert-success" style="color: black;" role="alert">
-                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fa fa-video-camera" style="color: #2d8cff;"></i> Zoom is Up and Running <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fa fa-video-camera" style="color: #2d8cff;"></i><span style="color: #2d8cff;"> Zoom</span> is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
                                 </div>
                             {%elif data.appname == 'zoom' and not data.online%}
                                 <div class="alert alert-danger" style="color: black;" role="alert">
-                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fa fa-video-camera" style="color: #2d8cff;"></i> Zoom is Down <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
+                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fa fa-video-camera" style="color: #2d8cff;"></i><span style="color: #2d8cff;"> Zoom</span> is Down <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
                                 </div>
                             {%elif data.appname == 'facebook messenger' and data.online%}
                                 <div class="alert alert-success" style="color: black;" role="alert">
-                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fab fa-facebook-messenger" style="color: #0084ff;"></i> Facebook Messenger is Up and Running <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fab fa-facebook-messenger" style="color: #0084ff;"></i> Facebook Messenger is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
                                 </div>
                             {%elif data.appname == 'facebook messenger' and not data.online%}
                                 <div class="alert alert-danger" style="color: black;" role="alert">
-                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fab fa-facebook-messenger" style="color: #0084ff;"></i> Facebook Messenger is Up and Running <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
+                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fab fa-facebook-messenger" style="color: #0084ff;"></i> Facebook Messenger is Up <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
                                 </div>
                             {%elif data.appname == 'youtube' and data.online%}
                                 <div class="alert alert-success" style="color: black;" role="alert">
-                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fa fa-youtube" style="color: #c4302b;"></i> Youtube is Up and Running <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fab fa-youtube" style="color: #c4302b;"></i> Youtube is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
                                 </div>
                             {%elif data.appname == 'youtube' and not data.online%}
                                 <div class="alert alert-danger" style="color: black;" role="alert">
-                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fa fa-youtube" style="color: #c4302b;"></i> Youtube is Down <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
+                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fab fa-youtube" style="color: #c4302b;"></i> Youtube is Down <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
                                 </div>
                             {%elif data.appname == 'flickr' and data.online%}
                                 <div class="alert alert-success" style="color: black;" role="alert">
-                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fab fa-flickr" style="color: #0063dc;"></i> Flickr is Up and Running <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fab fa-flickr" style="color: #0063dc;"></i> Flickr is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
                                 </div>
                             {%elif data.appname == 'flickr' and not data.online%}
                                 <div class="alert alert-danger" style="color: black;" role="alert">
@@ -104,15 +133,15 @@
                                 </div>
                             {%elif data.appname == 'twitter' and data.online%}
                                 <div class="alert alert-success" style="color: black;" role="alert">
-                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fab fa-twitter" style="color: #00acee;" style="color: #00acee;"></i> Twitter is Up and Running <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fab fa-twitter" style="color: #00acee;"></i><span style="color: #00acee;"> Twitter</span> is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
                                 </div>
                             {%elif data.appname == 'twitter' and not data.online%}
                                 <div class="alert alert-danger" style="color: black;" role="alert">
-                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fab fa-twitter" style="color: #00acee;" style="color: #00acee;"></i> Twitter is Down <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
+                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fab fa-twitter" style="color: #00acee;"></i><span style="color: #00acee;"> Twitter</span> is Down <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
                                 </div>
                             {%elif data.appname == 'netflix' and data.online%}
                                 <div class="alert alert-success" style="color: black;" role="alert">
-                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><span style="color: #e50914; font-family: serif;">N</span><i class="fab fa-netflix" style="color: #00acee;"></i> Netflix is Up and Running <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><span style="color: #e50914; font-family: serif;">N</span><i class="fab fa-netflix" style="color: #00acee;"></i> Netflix is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
                                 </div>
                             {%elif data.appname == 'netflix' and not data.online%}
                                 <div class="alert alert-danger" style="color: black;" role="alert">
@@ -120,7 +149,7 @@
                                 </div>
                             {%elif data.appname == 'google maps' and data.online%}
                                 <div class="alert alert-success" style="color: black;" role="alert">
-                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fab fa-google" style="color: #1a73e8;"></i><span style="color: #ea4335;">o</span><span style="color: #fbbc04;">o</span><span style="color: #4285f4;">g</span><span style="color: #34a853;">l</span><span style="color: red;">e</span> <span style="color: #1a73e8;">Maps</span> is Up and Running <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fab fa-google" style="color: #1a73e8;"></i><span style="color: #ea4335;">o</span><span style="color: #fbbc04;">o</span><span style="color: #4285f4;">g</span><span style="color: #34a853;">l</span><span style="color: red;">e</span> <span style="color: #1a73e8;">Maps</span> is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
                                 </div>
                             {%elif data.appname == 'google maps' and not data.online%}
                                 <div class="alert alert-danger" style="color: black;" role="alert">
@@ -128,7 +157,7 @@
                                 </div>
                             {%elif data.appname == 'google meet' and data.online%}
                                 <div class="alert alert-success" style="color: black;" role="alert">
-                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fab fa-google" style="color: #1a73e8;"></i><span style="color: #ea4335;">o</span><span style="color: #fbbc04;">o</span><span style="color: #4285f4;">g</span><span style="color: #34a853;">l</span><span style="color: red;">e</span> <span style="color: #1a73e8;">Meet</span> is Up and Running <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fab fa-google" style="color: #1a73e8;"></i><span style="color: #ea4335;">o</span><span style="color: #fbbc04;">o</span><span style="color: #4285f4;">g</span><span style="color: #34a853;">l</span><span style="color: red;">e</span> <span style="color: #1a73e8;">Meet</span> is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
                                 </div>
                             {%elif data.appname == 'google meet' and not data.online%}
                                 <div class="alert alert-danger" style="color: black;" role="alert">
@@ -136,7 +165,7 @@
                                 </div>
                             {%elif data.appname == 'booking.com' and data.online%}
                                 <div class="alert alert-success" style="color: black;" role="alert">
-                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fab fa-"></i><span style="color: #003580;"> Booking</span><span style="color: #fff;">.com</span> is Up and Running <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fab fa-"></i><span style="color: #003580;"> Booking</span><span style="color: #fff;">.com</span> is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
                                 </div>
                             {%elif data.appname == 'booking.com' and not data.online%}
                                 <div class="alert alert-danger" style="color: black;" role="alert">
@@ -144,7 +173,7 @@
                                 </div>
                             {%elif data.appname == 'audiomack' and data.online%}
                                 <div class="alert alert-success" style="color: black;" role="alert">
-                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fa fa-music" style="color: #000000;"></i> <span style="color: #ffa200;">Audiomack</span> is Up and Running <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fa fa-music" style="color: #000000;"></i> <span style="color: #ffa200;">Audiomack</span> is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
                                 </div>
                             {%elif data.appname == 'audiomack' and not data.online%}
                                 <div class="alert alert-danger" style="color: black;" role="alert">
@@ -152,7 +181,7 @@
                                 </div>
                             {%elif data.appname == 'cashapp' and data.online%}
                                 <div class="alert alert-success" style="color: black;" role="alert">
-                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fa fa-dollar" style="color: #00d632;"></i> Cashapp is Up and Running <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fa fa-dollar" style="color: #00d632;"></i> Cashapp is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
                                 </div>
                             {%elif data.appname == 'cashapp' and not data.online%}
                                 <div class="alert alert-danger" style="color: black;" role="alert">
@@ -160,7 +189,7 @@
                                 </div>
                             {%elif data.appname == 'discord' and data.online%}
                                 <div class="alert alert-success" style="color: black;" role="alert">
-                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fab fa-discord" style="color: #7289d9;"></i> Discord is Up and Running <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fab fa-discord" style="color: #7289d9;"></i> Discord is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
                                 </div>
                             {%elif data.appname == 'discord' and not data.online%}
                                 <div class="alert alert-danger" style="color: black;" role="alert">
@@ -168,7 +197,7 @@
                                 </div>
                             {%elif data.appname == 'linkedin' and data.online%}
                                 <div class="alert alert-success" style="color: black;" role="alert">
-                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fab fa-linkedin-in" style="color: #0e76a8;"></i> LinkedIn is Up and Running <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fab fa-linkedin-in" style="color: #0e76a8;"></i> LinkedIn is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
                                 </div>
                             {%elif data.appname == 'linkedin' and not data.online%}
                                 <div class="alert alert-danger" style="color: black;" role="alert">
@@ -176,7 +205,7 @@
                                 </div>
                             {%elif data.appname == 'reddit' and data.online%}
                                 <div class="alert alert-success" style="color: black;" role="alert">
-                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fab fa-reddit" style="color: #ff4500;"></i> Reddit is Up and Running <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fab fa-reddit" style="color: #ff4500;"></i> Reddit is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
                                 </div>
                             {%elif data.appname == 'reddit' and not data.online%}
                                 <div class="alert alert-danger" style="color: black;" role="alert">
@@ -184,7 +213,7 @@
                                 </div>
                             {%elif data.appname == 'salesforce' and data.online%}
                                 <div class="alert alert-success" style="color: black;" role="alert">
-                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fa-brands fa-salesforce" style="color: #00acee;"></i> Saleforce is Up and Running <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fa-brands fa-salesforce" style="color: #00acee;"></i> Saleforce is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
                                 </div>
                             {%elif data.appname == 'salesforce' and not data.online%}
                                 <div class="alert alert-danger" style="color: black;" role="alert">
@@ -192,7 +221,7 @@
                                 </div>
                             {%elif data.appname == 'taxify' and data.online%}
                                 <div class="alert alert-success" style="color: black;" role="alert">
-                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fa fa-taxi" style="color: #000000;"></i> Taxify is Up and Running <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fa fa-taxi" style="color: #000000;"></i> Taxify is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
                                 </div>
                             {%elif data.appname == 'taxify' and not data.online%}
                                 <div class="alert alert-danger" style="color: black;" role="alert">
@@ -200,7 +229,7 @@
                                 </div>
                             {%elif data.appname == 'uber' and data.online%}
                                 <div class="alert alert-success" style="color: black;" role="alert">
-                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fab fa-uber" style="color: #000000;"></i> Uber is Up and Running <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fab fa-uber" style="color: #000000;"></i> Uber is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
                                 </div>
                             {%elif data.appname == 'uber' and not data.online%}
                                 <div class="alert alert-danger" style="color: black;" role="alert">
@@ -208,7 +237,7 @@
                                 </div>
                             {%elif data.appname == 'amazon' and data.online%}
                                 <div class="alert alert-success" style="color: black;" role="alert">
-                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fa fa-amazon" style="color: #000000;"></i> Amazon is Up and Running <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fa fa-amazon" style="color: #000000;"></i> Amazon is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
                                 </div>
                             {%elif data.appname == 'amazon' and not data.online%}
                                 <div class="alert alert-danger" style="color: black;" role="alert">
@@ -216,7 +245,7 @@
                                 </div>
                             {%elif data.appname == 'paypal' and data.online%}
                                 <div class="alert alert-success" style="color: black;" role="alert">
-                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fa fa-paypal" style="color: #3b7bbf;"></i> PayPal is Up and Running <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fa fa-paypal" style="color: #3b7bbf;"></i> PayPal is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
                                 </div>
                             {%elif data.appname == 'paypal' and not data.online%}
                                 <div class="alert alert-danger" style="color: black;" role="alert">
@@ -224,15 +253,15 @@
                                 </div>
                             {%elif data.appname == 'pinterest' and data.online%}
                                 <div class="alert alert-success" style="color: black;" role="alert">
-                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fa fa-pinterest" style="color: #c8232c;"></i> Pinterest is Up and Running <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fa fa-pinterest" style="color: #c8232c;"></i><span style="color: #c8232c;"> Pinterest</span> is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
                                 </div>
                             {%elif data.appname == 'pinterest' and not data.online%}
                                 <div class="alert alert-danger" style="color: black;" role="alert">
-                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fa fa-pinterest" style="color: #c8232c;"></i> Pinterest is Down <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
+                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fa fa-pinterest" style="color: #c8232c;"></i><span style="color: #c8232c;"> Pinterest</span> is Down <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
                                 </div>
                             {%elif data.appname == 'apple' and data.online%}
                                 <div class="alert alert-success" style="color: black;" role="alert">
-                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fa fa-apple" style="color: #555555;"></i> Apple is Up and Running <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fa fa-apple" style="color: #555555;"></i> Apple is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
                                 </div>
                             {%elif data.appname == 'apple' and not data.online%}
                                 <div class="alert alert-danger" style="color: black;" role="alert">
@@ -240,7 +269,7 @@
                                 </div>
                             {%elif data.appname == 'stack overflow' and data.online%}
                                 <div class="alert alert-success" style="color: black;" role="alert">
-                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fa fa-stack-exchange" style="color: #f47f24;"></i> Stack Overflow is Up and Running <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fa fa-stack-exchange" style="color: #f47f24;"></i> Stack Overflow is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
                                 </div>
                             {%elif data.appname == 'stack overflow' and not data.online%}
                                 <div class="alert alert-danger" style="color: black;" role="alert">
@@ -248,7 +277,7 @@
                                 </div>
                             {%elif data.appname == 'tripadvisor' and data.online%}
                                 <div class="alert alert-success" style="color: black;" role="alert">
-                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fa fa-tripadvisor" style="color: #00af87;"></i> Tripadvisor is Up and Running <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fa fa-tripadvisor" style="color: #00af87;"></i> Tripadvisor is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
                                 </div>
                             {%elif data.appname == 'tripadvisor' and not data.online%}
                                 <div class="alert alert-danger" style="color: black;" role="alert">
@@ -256,7 +285,7 @@
                                 </div>
                             {%elif data.appname == 'tumblr' and data.online%}
                                 <div class="alert alert-success" style="color: black;" role="alert">
-                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fa fa-tumblr" style="color: #34526f;"></i> Tumblr is Up and Running <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fa fa-tumblr" style="color: #34526f;"></i> Tumblr is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
                                 </div>
                             {%elif data.appname == 'tumblr' and not data.online%}
                                 <div class="alert alert-danger" style="color: black;" role="alert">
@@ -264,15 +293,15 @@
                                 </div>
                             {%elif data.appname == 'twitch' and data.online%}
                                 <div class="alert alert-success" style="color: black;" role="alert">
-                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fa fa-twitch" style="color: #6441a5;"></i> Twitch is Up and Running <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fa fa-twitch" style="color: #6441a5;"></i><span style="color: #6441a5;"> Twitch</span> is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
                                 </div>
                             {%elif data.appname == 'twitch' and not data.online%}
                                 <div class="alert alert-danger" style="color: black;" role="alert">
-                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fa fa-twitch" style="color: #6441a5;"></i> Twitch is Down <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
+                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fa fa-twitch" style="color: #6441a5;"></i><span style="color: #6441a5;"> Twitch</span> is Down <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
                                 </div>
                             {%elif data.appname == 'wordpress' and data.online%}
                                 <div class="alert alert-success" style="color: black;" role="alert">
-                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fab fa-wordpress" style="color: #21759b;"></i> Wordpress is Up and Running <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fab fa-wordpress" style="color: #21759b;"></i> Wordpress is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
                                 </div>
                             {%elif data.appname == 'wordpress' and not data.online%}
                                 <div class="alert alert-danger" style="color: black;" role="alert">
@@ -280,23 +309,23 @@
                                 </div>
                             {%elif data.appname == 'wechat' and data.online%}
                                 <div class="alert alert-success" style="color: black;" role="alert">
-                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fa fa-wechat" style="color: #9de60b;"></i> Wechat is Up and Running <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fa fa-wechat" style="color: #9de60b;"></i><span style="color: #9de60b;"></span> Wechat is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
                                 </div>
                             {%elif data.appname == 'wechat' and not data.online%}
                                 <div class="alert alert-danger" style="color: black;" role="alert">
-                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fa fa-wechat" style="color: #9de60b;"></i> Wechat is Down <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
+                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fa fa-wechat" style="color: #9de60b;"></i><span style="color: #9de60b;"></span> Wechat is Down <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
                                 </div>
                             {%elif data.appname == 'airbnb' and data.online%}
                                 <div class="alert alert-success" style="color: black;" role="alert">
-                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fab fa-airbnb" style="color: #ff5a5f;"></i> Airbnb is Up and Running <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fab fa-airbnb" style="color: #ff5a5f;"></i><span style="color: #ff5a5f;"> Airbnb</span> is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
                                 </div>
                             {%elif data.appname == 'airbnb' and not data.online%}
                                 <div class="alert alert-danger" style="color: black;" role="alert">
-                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fab fa-airbnb" style="color: #ff5a5f;"></i> Airbnb is Down <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
+                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fab fa-airbnb" style="color: #ff5a5f;"></i><span style="color: #ff5a5f;"> Airbnb</span> is Down <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
                                 </div>
                             {%elif data.appname == 'spotify' and data.online%}
                                 <div class="alert alert-success" style="color: black;" role="alert">
-                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fab fa-spotify" style="color: #1db954;"></i> Spotify is Up and Running <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fab fa-spotify" style="color: #1db954;"></i> Spotify is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
                                 </div>
                             {%elif data.appname == 'spotify' and not data.online%}
                                 <div class="alert alert-danger" style="color: black;" role="alert">
@@ -304,7 +333,7 @@
                                 </div>
                             {%elif data.appname == 'shopify' and data.online%}
                                 <div class="alert alert-success" style="color: black;" role="alert">
-                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fa-brands fa-shopify" style="color: #96bf48;"></i> Shopify is Up and Running <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fa-brands fa-shopify" style="color: #96bf48;"></i> Shopify is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
                                 </div>
                             {%elif data.appname == 'shopify' and not data.online%}
                                 <div class="alert alert-danger" style="color: black;" role="alert">
@@ -312,7 +341,7 @@
                                 </div>
                             {%elif data.appname == 'skype' and data.online%}
                                 <div class="alert alert-success" style="color: black;" role="alert">
-                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fa-brands fa-skype" style="color: #00aff0;"></i> Skype is Up and Running <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fa-brands fa-skype" style="color: #00aff0;"></i> Skype is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
                                 </div>
                             {%elif data.appname == 'skype' and not data.online%}
                                 <div class="alert alert-danger" style="color: black;" role="alert">
@@ -320,7 +349,7 @@
                                 </div>
                             {%elif data.appname == 'meetup' and data.online%}
                                 <div class="alert alert-success" style="color: black;" role="alert">
-                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fa-brands fa-meetup" style="color: #e51937;"></i> Meetup is Up and Running <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fa-brands fa-meetup" style="color: #e51937;"></i> Meetup is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
                                 </div>
                             {%elif data.appname == 'meetup' and not data.online%}
                                 <div class="alert alert-danger" style="color: black;" role="alert">
@@ -328,7 +357,7 @@
                                 </div>
                             {%elif data.appname == 'udemy' and data.online%}
                                 <div class="alert alert-success" style="color: black;" role="alert">
-                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fa-brands fa-udemy" style="color: #e51937;"></i> Udemy is Up and Running <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                                    <a href="{%url 'history' data.appname %}" style="text-decoration: none; color: #000;"><i class="fa-brands fa-udemy" style="color: #e51937;"></i> Udemy is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
                                 </div>
                             {%elif data.appname == 'udemy' and not data.online%}
                                 <div class="alert alert-danger" style="color: black;" role="alert">

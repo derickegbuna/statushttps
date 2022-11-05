@@ -1,3 +1,4 @@
+{%load static%}
 {%load humanize%}
 <!DOCTYPE html>
 <html lang="en">
@@ -16,34 +17,52 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
+            <div class="container-fluid">
+                <h3 class="text-center"><strong> <span style="text-decoration:none; color:#457497;">Status</span><span style="text-decoration:none; color:#73c2fb;">HTTPS</span></strong></h3>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link"></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{%url 'about-us' %}">About us</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <br>
         <div class="container">
+            <div class="ps-0 pb-2"><a href="{%url 'home' %}" class="btn btn-sm rounded-circle" style="background-color: #73c2fb; color: white;"><i class="fa fa-arrow-left"></i></a></div>
             <div class="row">
-                <div class="col-md-4 pt-4 pb-4"></div>
-                <div class="col-md-4 pt-4 pb-4">
-                    <h3 class="text-center">History</h3>
-                    <div class="ps-0 pb-2"><a href="{%url 'home' %}" class="btn btn-sm btn-outline-primary">back</a></div>
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
                     {%if data%}
                         <div class="card ps-2 pe-2">
+                            <h5 class="text-center" style="color: #457497;">{{appname|capfirst}} 5 Recent Status Notifications</h5>
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
                                         <th scope="col"></th>
-                                        <th scope="col"></th>
                                         <th scope="col">Status</th>
-                                        <th scope="col">Time</th>
+                                        <th scope="col">Status Time</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {%for data in data%}
                                         <tr>
                                             <th scope="row">{{forloop.counter}}</th>
-                                            <td>{{data.appname|capfirst}}</td>
                                             {%if data.online%}
                                                 <td class="table-success">Online</td>
+                                                <td class="table-success">{{data.created|naturaltime}}</td>
                                             {%else%}
                                                 <td class="table-danger">Offline</td>
+                                                <td class="table-danger">{{data.created|naturaltime}}</td>
                                             {%endif%}
-                                            <td class="table-success">{{data.created|naturaltime}}</td>
                                         </tr>
                                     {%endfor%}
                                 </tbody>
@@ -52,14 +71,10 @@
                     {%else%}
                         <p class="text-center">{{appname|capfirst}} Server Status not available at the moment.</p>
                     {%endif%}
-
                 </div>
                 <div class="col-md-4 pt-4 pb-4"></div>
-
             </div>
         </div>
-
-
         <!-- Boostraps JS (including Popper for positioning dropdowns, poppers, and tooltips) -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
     </body>
