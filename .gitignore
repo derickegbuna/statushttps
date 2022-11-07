@@ -7,3 +7,4 @@ myvenv
 /static
 static/
 data.json
+.env

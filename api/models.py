@@ -12,6 +12,7 @@ class RealTimeBigData(models.Model):
     class Meta:
         ordering=['-created','appname']
 
+
 class MostUsedApp(models.Model):
     appname=models.CharField(max_length=200)
     url=models.CharField(max_length=200)
