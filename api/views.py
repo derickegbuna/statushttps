@@ -61,6 +61,9 @@ def about_us(request):
     context={}
     return render(request, 'aboutus.html', context)
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
 # ALL THE SOCIAL APPs AND ALL THEIR UPTIME AND DOWNTIME 
 @api_view(['GET'])
 def applist(request,format=None):

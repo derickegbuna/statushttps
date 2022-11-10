@@ -36,3 +36,15 @@ class LiveDataSerializer(serializers.ModelSerializer):
 #         representation=super(RealTimeDataSerializer,self).to_representation(instance)
 #         representation['date']=naturaltime(instance.date)
 #         return representation
+
+
+
+# Canva pro
+# pixellab
+# hbo max
+# boom play
+# disney+
+# grammarly
+# shazam
+# amazon prime
+# apple music
