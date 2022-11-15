@@ -35,3 +35,5 @@ class LiveData(models.Model):
     class Meta:
         ordering=['-date','online','appname']
 
+class Visitor(models.Model):
+    pass

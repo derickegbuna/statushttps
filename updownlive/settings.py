@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'knox',
     'rest_framework',
     'django.contrib.humanize',
+    'django_user_agents',
 ]
 
 MIDDLEWARE = [

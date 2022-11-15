@@ -41,6 +41,333 @@
             <div class="row">
                 <div class="col-md-4"></div>
                 <div class="col-md-4">
+                    {%for d in dat%}
+                    
+                        {%if d.appname == 'tiktok' and d.online%}
+                            <div class="alert alert-success" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fab fa-tiktok" style="color: #000000;"></i> <span class="fw-bold">Tiktok</span> is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                            </div>
+                        {%elif d.appname == 'tiktok' and not d.online%}
+                            <div class="alert alert-danger" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"> <i class="fab fa-tiktok" style="color: #000000;"></i> <span class="fw-bold">Tiktok</span> Down <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
+                            </div>
+                        {%elif d.appname == 'github' and d.online%}
+                                <div class="alert alert-success" style="color: black;" role="alert">
+                                    <a href="" style="text-decoration: none; color: #000;"><i class="fab fa-github" style="color: #000000;" ></i><span class="fw-bold" style="color: #000000;"> Github</span> is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                                </div>
+                        {%elif d.appname == 'github' and not d.online%}
+                                <div class="alert alert-danger" style="color: black;" role="alert">
+                                    <a href="" style="text-decoration: none; color: #000;"><i class="fab fa-github" style="color: #000000;" ></i><span class="fw-bold" style="color: #000000;"> Github</span> is Down <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
+                                </div>
+                        {%elif d.appname == 'spotify' and d.online%}
+                            <div class="alert alert-success" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fab fa-spotify" style="color: #81b71a;" ></i><span class="fw-bold" style="color: #81b71a;"> Spotify</span> is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                            </div>
+                        {%elif d.appname == 'spotify' and not d.online%}
+                            <div class="alert alert-danger" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fab fa-spotify" style="color: #81b71a;" ></i><span class="fw-bold" style="color: #81b71a;"> Spotify</span> is Down <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
+                            </div>
+                        {%elif d.appname == 'instagram' and d.online%}
+                            <div class="alert alert-success" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fab fa-instagram" style="color: #e4405f;"></i> <span class="fw-bold">Instagram</span> is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                            </div>
+                        {%elif d.appname == 'instagram' and not d.online%}
+                            <div class="alert alert-danger" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fab fa-instagram" style="color: #e4405f;"></i> <span class="fw-bold">Instagram</span> is Down <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
+                            </div>
+                        {%elif d.appname == 'facebook' and d.online%}
+                            <div class="alert alert-success" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fab fa-facebook" style="color: #3b5998;"></i> <span class="fw-bold" style="color: #3b5998;">Facebook</span> is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                            </div>
+                        {%elif d.appname == 'facebook' and not d.online%}
+                            <div class="alert alert-danger" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fab fa-facebook" style="color: #3b5998;"></i> <span class="fw-bold" style="color: #3b5998;">Facebook</span> is Down <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
+                            </div>
+                        {%elif d.appname == 'whatsapp' and d.online%}
+                            <div class="alert alert-success" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fab fa-whatsapp" style="color: #075e54;"></i> <span class="fw-bold" style="color: #075e54;">Whatsapp</span> is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                            </div>
+                        {%elif d.appname == 'whatsapp' and not d.online%}
+                            <div class="alert alert-danger" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fab fa-whatsapp" style="color: #075e54;"></i> <span class="fw-bold" style="color: #075e54;">Whatsapp</span> is Down <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
+                            </div>
+                        {%elif d.appname == 'telegram' and d.online%}
+                            <div class="alert alert-success" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fab fa-telegram" style="color: #0088cc;"></i> <span class="fw-bold" style="color: #0088cc;">Telegram</span> is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                            </div>
+                        {%elif d.appname == 'telegram' and not d.online%}
+                            <div class="alert alert-danger" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fab fa-telegram" style="color: #0088cc;"></i> <span class="fw-bold" style="color: #0088cc;">Telegram</span> is Down <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
+                            </div>
+                        {%elif d.appname == 'snapchat' and d.online%}
+                            <div class="alert alert-success" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fa fa-snapchat" style="color: #fffc00;"></i> <span class="fw-bold">Snapchat</span> is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                            </div>
+                        {%elif d.appname == 'snapchat' and not d.online%}
+                            <div class="alert alert-danger" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fa fa-snapchat" style="color: #fffc00;"></i> <span class="fw-bold">Snapchat</span> is Down <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
+                            </div>
+                        {%elif d.appname == 'zoom' and d.online%}
+                            <div class="alert alert-success" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fa fa-video-camera" style="color: #2d8cff;"></i><span class="fw-bold" style="color: #2d8cff;"> Zoom</span> is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                            </div>
+                        {%elif d.appname == 'zoom' and not d.online%}
+                            <div class="alert alert-danger" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fa fa-video-camera" style="color: #2d8cff;"></i><span class="fw-bold" style="color: #2d8cff;"> Zoom</span> is Down <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
+                            </div>
+                        {%elif d.appname == 'facebook messenger' and d.online%}
+                            <div class="alert alert-success" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fab fa-facebook-messenger" style="color: #0084ff;"></i> <span class="fw-bold" style="color: #0084ff;">Facebook Messenger</span> is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                            </div>
+                        {%elif d.appname == 'facebook messenger' and not d.online%}
+                            <div class="alert alert-danger" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fab fa-facebook-messenger" style="color: #0084ff;"></i> <span class="fw-bold" style="color: #0084ff;">Facebook Messenger</span> is Up <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
+                            </div>
+                        {%elif d.appname == 'youtube' and d.online%}
+                            <div class="alert alert-success" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fab fa-youtube" style="color: #c4302b;"></i> <span class="fw-bold" style="color: #c4302b;">Youtube</span> is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                            </div>
+                        {%elif d.appname == 'youtube' and not d.online%}
+                            <div class="alert alert-danger" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fab fa-youtube" style="color: #c4302b;"></i> <span class="fw-bold" style="color: #c4302b;">Youtube</span> is Down <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
+                            </div>
+                        {%elif d.appname == 'flickr' and d.online%}
+                            <div class="alert alert-success" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fab fa-flickr" style="color: #0063dc;"></i> <span class="fw-bold" style="color: #0063dc;">Flickr</span> is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                            </div>
+                        {%elif d.appname == 'flickr' and not d.online%}
+                            <div class="alert alert-danger" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fab fa-flickr" style="color: #0063dc;"></i> <span class="fw-bold" style="color: #0063dc;">Flickr</span> is Down <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
+                            </div>
+                        {%elif d.appname == 'twitter' and d.online%}
+                            <div class="alert alert-success" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fab fa-twitter" style="color: #00acee;"></i><span class="fw-bold" style="color: #00acee;"> Twitter</span> is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                            </div>
+                        {%elif d.appname == 'twitter' and not d.online%}
+                            <div class="alert alert-danger" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fab fa-twitter" style="color: #00acee;"></i><span class="fw-bold" style="color: #00acee;"> Twitter</span> is Down <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
+                            </div>
+                        {%elif d.appname == 'netflix' and d.online%}
+                            <div class="alert alert-success" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><span style="color: #e50914; font-family: serif;">N</span> <span class="fw-bold" style="color: #e50914;">Netflix</span> is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                            </div>
+                        {%elif d.appname == 'netflix' and not d.online%}
+                            <div class="alert alert-danger" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><span style="color: #e50914; font-family: serif;">N</span> <span class="fw-bold" style="color: #e50914;">Netflix</span> is Down <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
+                            </div>
+                        {%elif d.appname == 'google maps' and d.online%}
+                            <div class="alert alert-success" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fab fa-google" style="color: #1a73e8;"></i><span style="color: #ea4335;">o</span><span style="color: #fbbc04;">o</span><span style="color: #4285f4;">g</span><span style="color: #34a853;">l</span><span style="color: red;">e</span> <span style="color: #1a73e8;">Maps</span> is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                            </div>
+                        {%elif d.appname == 'google maps' and not d.online%}
+                            <div class="alert alert-danger" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fab fa-google" style="color: #1a73e8;"></i><span style="color: #ea4335;">o</span><span style="color: #fbbc04;">o</span><span style="color: #4285f4;">g</span><span style="color: #34a853;">l</span><span style="color: red;">e</span> <span style="color: #1a73e8;">Maps</span> is Down <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
+                            </div>
+                        {%elif d.appname == 'google meet' and d.online%}
+                            <div class="alert alert-success" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fab fa-google" style="color: #1a73e8;"></i><span style="color: #ea4335;">o</span><span style="color: #fbbc04;">o</span><span style="color: #4285f4;">g</span><span style="color: #34a853;">l</span><span style="color: red;">e</span> <span style="color: #1a73e8;">Meet</span> is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                            </div>
+                        {%elif d.appname == 'google meet' and not d.online%}
+                            <div class="alert alert-danger" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fab fa-google" style="color: #1a73e8;"></i><span style="color: #ea4335;">o</span><span style="color: #fbbc04;">o</span><span style="color: #4285f4;">g</span><span style="color: #34a853;">l</span><span style="color: red;">e</span> <span style="color: #1a73e8;">Meet</span> is Down <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
+                            </div>
+                        {%elif d.appname == 'booking.com' and d.online%}
+                            <div class="alert alert-success" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fab fa-"></i><span class="fw-bold" style="color: #003580;"> Booking</span><span style="color: #fff;">.com</span> is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                            </div>
+                        {%elif d.appname == 'booking.com' and not d.online%}
+                            <div class="alert alert-danger" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fab fa-"></i><span class="fw-bold" style="color: #003580;"> Booking</span><span style="color: #fff;">.com</span> is Down <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
+                            </div>
+                        {%elif d.appname == 'audiomack' and d.online%}
+                            <div class="alert alert-success" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fa fa-music" style="color: #000000;"></i> <span class="fw-bold" style="color: #ffa200;">Audiomack</span> is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                            </div>
+                        {%elif d.appname == 'audiomack' and not d.online%}
+                            <div class="alert alert-danger" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fa fa-music" style="color: #000000;"></i> <span class="fw-bold" style="color: #ffa200;">Audiomack</span> is Down <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
+                            </div>
+                        {%elif d.appname == 'cashapp' and d.online%}
+                            <div class="alert alert-success" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><span class="badge" style="background-color: #00d632;"><i class="fa fa-dollar" style="font-style: italic;"></i></span> <span class="fw-bold">Cashapp</span> is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                            </div>
+                        {%elif d.appname == 'cashapp' and not d.online%}
+                            <div class="alert alert-danger" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><span class="badge" style="background-color: #00d632;"><i class="fa fa-dollar" style="font-style: italic;"></i></span> <span class="fw-bold">Cashapp</span> is Down <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
+                            </div>
+                        {%elif d.appname == 'discord' and d.online%}
+                            <div class="alert alert-success" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fab fa-discord" style="color: #7289d9;"></i> <span class="fw-bold" style="color: #7289d9;">Discord</span> is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                            </div>
+                        {%elif d.appname == 'discord' and not d.online%}
+                            <div class="alert alert-danger" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fab fa-discord" style="color: #7289d9;"></i> <span class="fw-bold" style="color: #7289d9;">Discord</span> is Down <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
+                            </div>
+                        {%elif d.appname == 'linkedin' and d.online%}
+                            <div class="alert alert-success" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fab fa-linkedin-in" style="color: #0e76a8;"></i> <span class="fw-bold" style="color: #0e76a8;">LinkedIn</span> is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                            </div>
+                        {%elif d.appname == 'linkedin' and not d.online%}
+                            <div class="alert alert-danger" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fab fa-linkedin-in" style="color: #0e76a8;"></i> <span class="fw-bold" style="color: #0e76a8;">LinkedIn</span> is Down <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
+                            </div>
+                        {%elif d.appname == 'reddit' and d.online%}
+                            <div class="alert alert-success" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fab fa-reddit" style="color: #ff4500;"></i> <span class="fw-bold" style="color: #ff4500;">Reddit</span> is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                            </div>
+                        {%elif d.appname == 'reddit' and not d.online%}
+                            <div class="alert alert-danger" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fab fa-reddit" style="color: #ff4500;"></i> <span class="fw-bold" style="color: #ff4500;">Reddit</span> is Down <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
+                            </div>
+                        {%elif d.d.appname == 'salesforce' and d.online%}
+                            <div class="alert alert-success" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fa-brands fa-salesforce" style="color: #00acee;"></i> <span class="fw-bold" style="color: #00acee;">Saleforce</span> is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                            </div>
+                        {%elif d.d.appname == 'salesforce' and not d.online%}
+                            <div class="alert alert-danger" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fa-brands fa-salesforce" style="color: #00acee;"></i> <span class="fw-bold" style="color: #00acee;">Saleforce</span> is Down <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
+                            </div>
+                        {%elif d.appname == 'taxify' and d.online%}
+                            <div class="alert alert-success" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><span class="fw-bold" style="color: #00cc33;">Bolt</span> is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                            </div>
+                        {%elif d.appname == 'taxify' and not d.online%}
+                            <div class="alert alert-danger" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><span class="fw-bold" style="color: #00cc33;">Bolt</span> is Down <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
+                            </div>
+                        {%elif d.appname == 'uber' and d.online%}
+                            <div class="alert alert-success" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fab fa-uber" style="color: #000000;"></i> <span class="fw-bold">Uber</span> is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                            </div>
+                        {%elif d.appname == 'uber' and not d.online%}
+                            <div class="alert alert-danger" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fab fa-uber" style="color: #000000;"></i> <span class="fw-bold">Uber</span> is Down <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
+                            </div>
+                        {%elif d.appname == 'amazon' and d.online%}
+                            <div class="alert alert-success" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fa fa-amazon" style="color: #000000;"></i> <span class="fw-bold" style="color: #e47911;">Amazon</span> is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                            </div>
+                        {%elif d.appname == 'amazon' and not d.online%}
+                            <div class="alert alert-danger" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fa fa-amazon" style="color: #000000;"></i> <span class="fw-bold" style="color: #e47911;">Amazon</span> is Down <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
+                            </div>
+                        {%elif d.appname == 'paypal' and d.online%}
+                            <div class="alert alert-success" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fa fa-paypal" style="color: #3b7bbf;"></i> <span class="fw-bold"><span style="color: #253b80;">Pay</span><span style="color: #2997d8;">Pal</span></span> is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                            </div>
+                        {%elif d.appname == 'paypal' and not d.online%}
+                            <div class="alert alert-danger" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fa fa-paypal" style="color: #3b7bbf;"></i> <span class="fw-bold"><span style="color: #253b80;">Pay</span><span style="color: #2997d8;">Pal</span></span> is Down <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
+                            </div>
+                        {%elif d.appname == 'pinterest' and d.online%}
+                            <div class="alert alert-success" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fa fa-pinterest" style="color: #c8232c;"></i><span class="fw-bold" style="color: #c8232c;"> Pinterest</span> is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                            </div>
+                        {%elif d.appname == 'pinterest' and not d.online%}
+                            <div class="alert alert-danger" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fa fa-pinterest" style="color: #c8232c;"></i><span class="fw-bold" style="color: #c8232c;"> Pinterest</span> is Down <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
+                            </div>
+                        {%elif d.appname == 'apple' and d.online%}
+                            <div class="alert alert-success" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fa fa-apple" style="color: #555555;"></i> <span class="fw-bold">Apple</span> is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                            </div>
+                        {%elif d.appname == 'apple' and not d.online%}
+                            <div class="alert alert-danger" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fa fa-apple" style="color: #555555;"></i> <span class="fw-bold">Apple</span> is Down <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
+                            </div>
+                        {%elif d.appname == 'stack overflow' and d.online%}
+                            <div class="alert alert-success" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fa fa-stack-exchange" style="color: #f47f24;"></i> <span class="fw-bold">Stack Overflow</span> is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                            </div>
+                        {%elif d.appname == 'stack overflow' and not d.online%}
+                            <div class="alert alert-danger" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fa fa-stack-exchange" style="color: #f47f24;"></i> <span class="fw-bold">Stack Overflow</span> is Down <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
+                            </div>
+                        {%elif d.appname == 'tripadvisor' and d.online%}
+                            <div class="alert alert-success" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fa fa-tripadvisor" style="color: #00af87;"></i> <span class="fw-bold" style="color: #00af87;">Tripadvisor</span> is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                            </div>
+                        {%elif d.appname == 'tripadvisor' and not d.online%}
+                            <div class="alert alert-danger" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fa fa-tripadvisor" style="color: #00af87;"></i> <span class="fw-bold" style="color: #00af87;">Tripadvisor</span> is Down <span class="badge bg-danger" style=" color: #fff;">offline</span></a>
+                            </div>
+                        {%elif d.appname == 'tumblr' and d.online%}
+                            <div class="alert alert-success" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fa fa-tumblr" style="color: #34526f;"></i> <span class="fw-bold" style="color: #34526f;">Tumblr</span> is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                            </div>
+                        {%elif d.appname == 'tumblr' and not d.online%}
+                            <div class="alert alert-danger" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fa fa-tumblr" style="color: #34526f;"></i> <span class="fw-bold" style="color: #34526f;">Tumblr</span> is Down <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
+                            </div>
+                        {%elif d.appname == 'twitch' and d.online%}
+                            <div class="alert alert-success" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fa fa-twitch" style="color: #6441a5;"></i><span class="fw-bold" style="color: #6441a5;"> Twitch</span> is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                            </div>
+                        {%elif d.appname == 'twitch' and not d.online%}
+                            <div class="alert alert-danger" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fa fa-twitch" style="color: #6441a5;"></i><span class="fw-bold" style="color: #6441a5;"> Twitch</span> is Down <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
+                            </div>
+                        {%elif d.appname == 'wordpress' and d.online%}
+                            <div class="alert alert-success" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fab fa-wordpress" style="color: #21759b;"></i> <span class="fw-bold" style="color: #21759b;">Wordpress</span> is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                            </div>
+                        {%elif d.appname == 'wordpress' and not d.online%}
+                            <div class="alert alert-danger" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fab fa-wordpress" style="color: #21759b;"></i> <span class="fw-bold" style="color: #21759b;">Wordpress</span> is Down <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
+                            </div>
+                        {%elif d.appname == 'wechat' and d.online%}
+                            <div class="alert alert-success" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fa fa-wechat" style="color: #9de60b;"></i><span style="color: #9de60b;"></span> <span class="fw-bold">Wechat</span> is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                            </div>
+                        {%elif d.appname == 'wechat' and not d.online%}
+                            <div class="alert alert-danger" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fa fa-wechat" style="color: #9de60b;"></i><span style="color: #9de60b;"></span> <span class="fw-bold">Wechat</span> is Down <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
+                            </div>
+                        {%elif d.appname == 'airbnb' and d.online%}
+                            <div class="alert alert-success" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fab fa-airbnb" style="color: #ff5a5f;"></i><span class="fw-bold" style="color: #ff5a5f;"> Airbnb</span> is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                            </div>
+                        {%elif d.appname == 'airbnb' and not d.online%}
+                            <div class="alert alert-danger" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fab fa-airbnb" style="color: #ff5a5f;"></i><span class="fw-bold" style="color: #ff5a5f;"> Airbnb</span> is Down <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
+                            </div>
+                        {%elif d.appname == 'shopify' and d.online%}
+                            <div class="alert alert-success" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fa-brands fa-shopify" style="color: #96bf48;"></i> <span class="fw-bold">Shopify</span> is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                            </div>
+                        {%elif d.appname == 'shopify' and not d.online%}
+                            <div class="alert alert-danger" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fa-brands fa-shopify" style="color: #96bf48;"></i> <span class="fw-bold">Shopify</span> is Down <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
+                            </div>
+                        {%elif d.appname == 'skype' and d.online%}
+                            <div class="alert alert-success" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fa-brands fa-skype" style="color: #00aff0;"></i> <span class="fw-bold" style="color: #00aff0;">Skype</span> is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                            </div>
+                        {%elif d.appname == 'skype' and not d.online%}
+                            <div class="alert alert-danger" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fa-brands fa-skype" style="color: #00aff0;"></i> <span class="fw-bold" style="color: #00aff0;">Skype</span> is Down <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
+                            </div>
+                        {%elif d.appname == 'meetup' and d.online%}
+                            <div class="alert alert-success" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fa-brands fa-meetup" style="color: #e51937;"></i> <span class="fw-bold">Meetup</span> is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                            </div>
+                        {%elif d.appname == 'meetup' and not d.online%}
+                            <div class="alert alert-danger" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fa-brands fa-meetup" style="color: #e51937;"></i> <span class="fw-bold">Meetup</span> is Down <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
+                            </div>
+                        {%elif d.appname == 'udemy' and d.online%}
+                            <div class="alert alert-success" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fa-brands fa-udemy" style="color: #e51937;"></i> <span class="fw-bold">Udemy</span> is Up <span class="badge bg-success" style=" color: #fff;">Online</span></a>
+                            </div>
+                        {%elif d.appname == 'udemy' and not d.online%}
+                            <div class="alert alert-danger" style="color: black;" role="alert">
+                                <a href="" style="text-decoration: none; color: #000;"><i class="fa-brands fa-udemy" style="color: #e51937;"></i> <span class="fw-bold">Udemy</span> is Down <span class="badge bg-danger" style=" color: #fff;">Offline</span></a>
+                            </div>
+                        {%endif%}
+                    {%endfor%}
+
+
+                    <!-- History -->
                     {%if data%}
                         <div class="card ps-2 pe-2">
                             <h5 class="text-center" style="color: #457497;">{{appname|capfirst}} 5 Recent Status Notifications</h5>
@@ -69,10 +396,19 @@
                             </table>
                         </div>
                     {%else%}
-                        <p class="text-center">{{appname|capfirst}} Server Status not available at the moment.</p>
+                        <p class="text-center">{{appname|capfirst}} Server History not available at the moment.</p>
                     {%endif%}
                 </div>
                 <div class="col-md-4 pt-4 pb-4"></div>
+            </div>
+            <div class="row text-center fixed-bottom pb-1 pt-2" style="background-color: #fff;">
+                <div class="social-media">
+                  <a href="#"><i class="fab fa-facebook" style="color: #4267b2;"></i></a>
+                  <a href="#"><i class="fab fa-twitter" style="color: #1da1f2;"></i></a>
+                  <a href="#"><i class="fab fa-instagram" style="color: #fb3958;"></i></a>
+                  <a href="#"><i class="fab fa-github" style="color: #171515;"></i></a>
+                  <a href="#"><i class="fab fa-linkedin-in" style="color: #0072b1;"></i></a>
+                </div>
             </div>
         </div>
         <!-- Boostraps JS (including Popper for positioning dropdowns, poppers, and tooltips) -->

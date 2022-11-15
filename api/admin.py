@@ -13,3 +13,5 @@ class MostUsedAppAdmin(admin.ModelAdmin):
 @admin.register(LiveData)
 class LiveDataAdmin(admin.ModelAdmin):
     list_display=['appname','url','date','online','code']
+
+

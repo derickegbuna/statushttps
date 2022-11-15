@@ -15,6 +15,7 @@ from api.models import RealTimeBigData, MostUsedApp, LiveData
 from .serializer import RealTimeBigDataSerializer,MostUsedAppSerializer,LiveDataSerializer
 from api import serializer
 import requests
+from django_user_agents.utils import get_user_agent
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 # NOTEs
 # NB: TIKTOK response.status_code returns 403
@@ -35,10 +36,55 @@ def is_SERVER_up(url):
             return False, error_code
     except requests.exceptions.RequestException as e:
         return e
+
+# Getting Visitor IP address note we have(HTTP_CLIENT_IP, HTTP_X_FORWARDED_FOR, HTTP_X_FORWARDED, HTTP_X_CLUSTER_CLIENT_IP, HTTP_FORWARDED_FOR, HTTP_FORWARDED, REMOTE_ADDR, HTTP_CF_CONNECTING_IP)
+def get_ip(request):
+    try:
+        address=request.META.get('HTTP_X_FORWARDED_FOR')
+        if address:
+            ip=address.split(',')[-1].strip()
+        else:
+            ip=request.META.get('REMOTE_ADDR')
+        return ip
+    except:
+        return ('ip could not be found')
+def get_loc(ip):
+    response=requests.get('https://geolocation-db.com/json/'+ip+'&position=true').json()
+    location=response['country_name']
+    state=response['state']
+    city=response['city']
+    return location,state,city
+def deviceType(request):
+    if get_user_agent(request).is_pc:
+        device='Desktop'
+    elif get_user_agent(request).is_mobile:
+        device='Mobile'
+    elif get_user_agent(request).is_tablet:
+        device='Tablet'
+    elif get_user_agent(request).is_bot:
+        device='Bot'
+    else:
+        device='Others'
+    return device
+
+def userAGENT(request):
+    deviceName=request.user_agent.device.family
+    deviceOS=request.user_agent.os.family
+    deviceOSversion=request.user_agent.os.version_string
+    device_OS=deviceOS+' '+deviceOSversion
+    browserName=request.user_agent.browser.family
+    browserVersion=request.user_agent.browser.version_string
+    browser=browserName+' '+browserVersion
+    return deviceName,device_OS,browser
+
+
 # Create your views here.
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<WEBSITE<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 @api_view(['GET'])
 def home(request):
+    # Vistors details to be saved to Visitor models
+    # ip,location,device,
+
     data=LiveData.objects.all()
     recent=data[:1]
     context={
@@ -50,9 +96,11 @@ def home(request):
 @api_view(['GET'])
 def statushistory(request,pk):
     data=RealTimeBigData.objects.filter(appname=pk)
+    dt=LiveData.objects.filter(appname=pk)
     context={
         'data':data,
         'appname':pk,
+        'dat':dt,
     }
     return render(request,'app.html',context)
 
