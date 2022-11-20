@@ -11,11 +11,13 @@ from django.shortcuts import redirect, render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-from api.models import RealTimeBigData, MostUsedApp, LiveData
+from api.models import RealTimeBigData, MostUsedApp, LiveData, Visitor
 from .serializer import RealTimeBigDataSerializer,MostUsedAppSerializer,LiveDataSerializer
 from api import serializer
 import requests
 from django_user_agents.utils import get_user_agent
+from django.http import HttpResponse,HttpResponseNotFound,HttpResponseForbidden
+
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 # NOTEs
 # NB: TIKTOK response.status_code returns 403
@@ -48,26 +50,25 @@ def get_ip(request):
         return ip
     except:
         return ('ip could not be found')
+
 def get_loc(ip):
     response=requests.get('https://geolocation-db.com/json/'+ip+'&position=true').json()
     location=response['country_name']
     state=response['state']
     city=response['city']
     return location,state,city
-def deviceType(request):
-    if get_user_agent(request).is_pc:
-        device='Desktop'
-    elif get_user_agent(request).is_mobile:
-        device='Mobile'
-    elif get_user_agent(request).is_tablet:
-        device='Tablet'
-    elif get_user_agent(request).is_bot:
-        device='Bot'
-    else:
-        device='Others'
-    return device
 
 def userAGENT(request):
+    if get_user_agent(request).is_pc:
+        deviceType='Desktop'
+    elif get_user_agent(request).is_mobile:
+        deviceType='Mobile'
+    elif get_user_agent(request).is_tablet:
+        deviceType='Tablet'
+    elif get_user_agent(request).is_bot:
+        deviceType='Bot'
+    else:
+        deviceType='Others'
     deviceName=request.user_agent.device.family
     deviceOS=request.user_agent.os.family
     deviceOSversion=request.user_agent.os.version_string
@@ -75,23 +76,28 @@ def userAGENT(request):
     browserName=request.user_agent.browser.family
     browserVersion=request.user_agent.browser.version_string
     browser=browserName+' '+browserVersion
-    return deviceName,device_OS,browser
+    return deviceType,deviceName,device_OS,browser
+    # return deviceName
 
 
 # Create your views here.
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<WEBSITE<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 @api_view(['GET'])
 def home(request):
-    # Vistors details to be saved to Visitor models
-    # ip,location,device,
+    ip=get_ip(request)
+    deviceType,deviceName,deviceOS,browser=userAGENT(request)
+    if ip and deviceType:
+        # Visitor.objects.create(ip=ip,device_type=deviceType,device_name=deviceName,device_OS=deviceOS,browser=browser)
 
-    data=LiveData.objects.all()
-    recent=data[:1]
-    context={
-        'app':data,
-        'update':recent,
-    }
-    return render(request,'api.html',context)
+        data=LiveData.objects.all()
+        recent=data[:1]
+        context={
+            'app':data,
+            'update':recent,
+        }
+        return render(request,'api.html',context)
+    return render(request,'400error.html')
+
 
 @api_view(['GET'])
 def statushistory(request,pk):

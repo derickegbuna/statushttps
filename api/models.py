@@ -36,4 +36,9 @@ class LiveData(models.Model):
         ordering=['-date','online','appname']
 
 class Visitor(models.Model):
-    pass
+    ip=models.CharField(blank=False,null=False,max_length=45)
+    device_type=models.CharField(blank=False,null=True,max_length=10)
+    device_name=models.CharField(blank=True,null=True,max_length=125)
+    device_OS=models.CharField(blank=True,null=True,max_length=125)
+    browser=models.CharField(blank=True,null=True,max_length=125)
+    date=models.DateTimeField(auto_now_add=True)

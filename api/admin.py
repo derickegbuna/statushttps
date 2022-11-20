@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import RealTimeBigData,MostUsedApp,LiveData
+from .models import RealTimeBigData,MostUsedApp,LiveData,Visitor
 # Register your models here.
 # admin.site.register(RealTimeBigData)
 @admin.register(RealTimeBigData)
@@ -14,4 +14,6 @@ class MostUsedAppAdmin(admin.ModelAdmin):
 class LiveDataAdmin(admin.ModelAdmin):
     list_display=['appname','url','date','online','code']
 
-
+@admin.register(Visitor)
+class VisitorAdmin(admin.ModelAdmin):
+    list_display=['ip','device_type','device_name','device_OS','browser','date']
